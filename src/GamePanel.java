@@ -38,18 +38,43 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
         while(frame.isVisible()){
+
             computeDelta();
 
+            checkKeys();        //abfrage tastatureingaben
+            doLogic();          //ausfürung von logik ops
+            moveObjects();      //objekte bewegen
+
             repaint();
+
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {}
         }
     }
 
+    private void moveObjects() {
+
+    }
+
+    private void doLogic() {
+
+    }
+
+    private void checkKeys() {
+
+    }
+
     private void computeDelta() {
         delta = System.nanoTime() - last;
         last = System.nanoTime();
         fps = ((long) 1e9) / delta;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.red);
+        g.drawString("FPS: " + Long.toString(fps), 400, 100);
     }
 }
