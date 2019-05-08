@@ -10,6 +10,7 @@ public class Sprite extends Rectangle2D.Double implements Drawable, Movable {
     long animation = 0;
     GamePanel parent;           //Referenz auf Game Panel
     BufferedImage[] pics;       //Array zum speichern der Animation in Einzelbildern
+    BufferedImage[] picsRevert;
     int currentpic = 0;         //zähler fpr aktuell anzuzeigeneds bild
 
     protected double dx;        //wie schnell soll bewegt werden?
@@ -23,6 +24,7 @@ public class Sprite extends Rectangle2D.Double implements Drawable, Movable {
         this.width = pics[0].getWidth();
         this.height = pics[0].getHeight();
         parent = p;
+        picsRevert = Util.revertArray(i);
     }
 
     public double getHorizontalSpeed() {
