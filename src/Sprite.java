@@ -31,6 +31,7 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
 
     public void changeDirection(Direction d){
         movingDirection = d;
+
     }
 
 
@@ -66,23 +67,46 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
 
 
     public void doLogic(long delta) {
-            animation += (delta/1000000);
-            if (animation > delay) {
-                //wenn animation grösser als voreingestellter animationswert:
-                animation = 0;
-                computeAnimation();
-            }
+
+        switch (movingDirection) {
+            case STILL:
+                break;
+            case LEFT:
+                movingAnim(Direction.LEFT, delta);
+                break;
+            case RIGHT:
+                movingAnim(Direction.RIGHT, delta);
+                break;
+        }
+
 
     }
 
-    private void computeAnimation() {
-
-
-        currentpic++;
-
-        if (currentpic >= pics.length) {
-            currentpic = 0;
+    private void movingAnim(Direction d, long delta){
+        animation += (delta/1000000);
+        if (animation > delay) {
+            //wenn animation grösser als voreingestellter animationswert:
+            animation = 0;
+            computeAnimation(d);
         }
+    }
+
+    public void computeAnimation(Direction d) {
+
+        if(d.equals(Direction.LEFT)){
+            currentpic--;
+
+            if (currentpic < 0) {
+                currentpic = pics.length - 1;
+            }
+        } else if (d.equals(Direction.RIGHT)){
+            currentpic++;
+
+            if (currentpic >= pics.length) {
+                currentpic = 0;
+            }
+        }
+
     }
 
 

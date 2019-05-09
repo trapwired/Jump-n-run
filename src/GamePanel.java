@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     boolean left;
     boolean right;
     boolean started;
-    int speed = 50;
+    int speed = 200;
 
     public  GamePanel(int w, int h){
         this.setPreferredSize(new Dimension(w,h));
@@ -52,12 +52,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     private void doInitializations() {
         last = System.nanoTime();
 
-        BufferedImage[] walkManAr = loadPics("pics/WalkMan.png", 9);
+        BufferedImage[] walkManAr = loadPics("pics/WalkManS.png", 9);
         walkManAr = Util.revertArray(walkManAr);
 
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 400, 300, 100, this);
+        walkMan = new WalkMan(walkManAr, 400, 300, 80, this);
         actors.add(walkMan);
 
         started = true;
