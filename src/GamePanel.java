@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     public  GamePanel(int w, int h){
         this.setPreferredSize(new Dimension(w,h));
-        this.setBackground(Color.blue);
+        this.setBackground(Color.orange);
         frame = new JFrame("GameFrame");
         frame.setLocation(100,100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
