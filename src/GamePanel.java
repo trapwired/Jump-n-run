@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ListIterator;
 import java.util.Vector;
 
@@ -21,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     long fps = 0;       //Berechnung FPS
 
 
-    Sprite walkMan;
+    WalkMan walkMan;
     Vector<Sprite> actors;
     Vector<Sprite> painter;
 
@@ -30,10 +29,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     boolean down;
     boolean left;
     boolean right;
+    boolean started;
     int speed = 50;
 
     public  GamePanel(int w, int h){
         this.setPreferredSize(new Dimension(w,h));
+        this.setBackground(Color.blue);
         frame = new JFrame("GameFrame");
         frame.setLocation(100,100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,8 +42,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         frame.addKeyListener(this);
         frame.pack();
         frame.setVisible(true);
-
-        doInitializations();
 
         //Thread stuff
         Thread th = new Thread(this);
@@ -53,13 +52,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     private void doInitializations() {
         last = System.nanoTime();
 
-        BufferedImage[] walkManAr = loadPics("pics/walkMan.png", 9);
+        BufferedImage[] walkManAr = loadPics("pics/WalkMan.png", 9);
         walkManAr = Util.revertArray(walkManAr);
 
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
-        walkMan = new Sprite(walkManAr, 400, 300, 100, this);
+        walkMan = new WalkMan(walkManAr, 400, 300, 100, this);
         actors.add(walkMan);
+
+        started = true;
     }
 
 
@@ -69,10 +70,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
             computeDelta();
 
-            checkKeys();        //abfrage tastatureingaben
-            doLogic();          //ausfürung von logik ops
-            moveObjects();      //objekte bewegen
-            cloneVectors();     //kopieren von actors zu painter
+            if(isStarted()){
+                checkKeys();        //abfrage tastatureingaben
+                doLogic();          //ausfürung von logik ops
+                moveObjects();      //objekte bewegen
+                cloneVectors();     //kopieren von actors zu painter
+            }
             repaint();
 
             try {
@@ -101,12 +104,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     }
 
     private void checkKeys() {
-        if(up) {
-            walkMan.setVerticalSpeed(-speed);
-        }
-        if(down) {
-            walkMan.setVerticalSpeed(speed);
-        }
+//        if(up) {
+//            walkMan.setVerticalSpeed(-speed);
+//        }
+//        if(down) {
+//            walkMan.setVerticalSpeed(speed);
+//        }
         if(right) {
             walkMan.setHorizontalSpeed(speed);
         }
@@ -118,6 +121,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         }
         if(!left&&!right){
             walkMan.setHorizontalSpeed(0);
+            walkMan.changeDirection(Direction.STILL);
         }
     }
 
@@ -133,11 +137,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         g.setColor(Color.red);
         g.drawString("FPS: " + Long.toString(fps), 20, 10);
 
-        if(painter != null){
-            for(ListIterator<Sprite> it = painter.listIterator(); it.hasNext();){
-                Sprite r = it.next();
-                r.drawObjects(g);
-            }
+
+        if(!started){
+            return;
+        }
+
+        for(ListIterator<Sprite> it = painter.listIterator(); it.hasNext();){
+            Sprite r = it.next();
+            r.drawObjects(g);
         }
     }
 
@@ -175,9 +182,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             left = true;
+            walkMan.changeDirection(Direction.LEFT);
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             right = true;
+            walkMan.changeDirection(Direction.RIGHT);
         }
     }
 
@@ -191,9 +200,34 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
             left = false;
+            walkMan.changeDirection(Direction.STILL);
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             right = false;
+            walkMan.changeDirection(Direction.STILL);
         }
+
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            if(!isStarted()){
+                doInitializations();
+                setStarted(true);
+            }
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
+            if(isStarted()){
+                setStarted(false);
+            } else {
+                frame.dispose();
+            }
+        }
+    }
+
+    public boolean isStarted(){
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
     }
 }
