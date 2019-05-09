@@ -57,10 +57,32 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 400, 300, 80, this);
+        walkMan = new WalkMan(walkManAr, 100, 460, 80, this);
         actors.add(walkMan);
 
+        createGrass();
+        createClouds();
+
         started = true;
+    }
+
+    private void createGrass(){
+        BufferedImage[] bi = loadPics("pics/grasscomplete.png", 1);
+        Grass grass = new Grass(bi, 0, 490, 1000, this);
+        Grass grass2 = new Grass(bi, 527, 490, 1000, this);
+        actors.add(grass);
+        actors.add(grass2);
+
+    }
+
+    private void createClouds(){
+        BufferedImage[] bi = loadPics("pics/cloud.png", 1);
+
+        for (int y = 10; y < (getHeight()/2); y += ((int)(Math.random()*150))){
+            int x = (int) (Math.random()*getWidth());
+            Cloud cloud = new Cloud(bi, x, y, 1000, this);
+            actors.add(cloud);
+        }
     }
 
 
