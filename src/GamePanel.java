@@ -109,6 +109,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     @SuppressWarnings("unchecked")
     private void cloneVectors() {
         painter = (Vector<Sprite>) actors.clone();
+        //sort vector with zLocation, first element in painter is firstly drawn
+        // -->  start with lowest zLocation value,
+        // -1 <= zLoc <= 100
+        //clear painter
+
+        //loop over actors
+
+        //choose lowest zLoc
+
+        //maybe add when adding to actors, sort in?? -TODO
+        System.out.println(painter);
     }
 
     private void moveObjects() {
