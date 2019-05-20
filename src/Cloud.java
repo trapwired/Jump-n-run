@@ -6,12 +6,14 @@ public class Cloud extends Sprite {
     final int SPEED = (int) (Math.random()*50) + 10;
 
     public Cloud(BufferedImage[] i, double x, double y, long delay, GamePanel p) {
-        super(i, x, y, delay, p);
+        super(i, x, y, delay, p, 0);
 
         if((int) (Math.random()*2)<1){
             setHorizontalSpeed(-SPEED);
+            changeDirection(Direction.LEFT);
         } else {
             setHorizontalSpeed(SPEED);
+            changeDirection(Direction.RIGHT);
         }
     }
 

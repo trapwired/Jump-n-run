@@ -1,15 +1,20 @@
+import org.jetbrains.annotations.NotNull;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.ListIterator;
 import java.util.Vector;
 
-public class GamePanel extends JPanel implements Runnable, KeyListener {
+public class GamePanel extends JPanel implements Runnable, KeyListener, ActionListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,7 +37,20 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
     boolean started;
     int speed = 200;
 
+    //set to size of actors when last sorted
+    private int actors_size = 0;
+
+    //2D array for building blocks
+    Building_block[][] block_grid;
+
+    Timer timer;
+    BufferedImage[] butterfly;
+
     public  GamePanel(int w, int h){
+        int w_b = w / 100;
+        int h_b = h / 100;
+        w = w_b * 100;
+        h = h_b * 100;
         this.setPreferredSize(new Dimension(w,h));
         this.setBackground(Color.orange);
         frame = new JFrame("GameFrame");
@@ -43,9 +61,62 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         frame.pack();
         frame.setVisible(true);
 
+        //init background grid
+        block_grid = new Building_block[h_b][w_b];
         //Thread stuff
         Thread th = new Thread(this);
         th.start();
+    }
+
+    private void draw_level() {
+        //init the background blocks / draw the level
+        int height = block_grid.length;
+        int width  = block_grid[0].length;
+        //draw floor: grass
+        for (int i = 0; i < block_grid[0].length; i++){
+            draw_block_at(i, (height - 1), Block.GRASS);
+        }
+
+        draw_block_at(1,1, Block.WOOD);
+        draw_block_at(2,1, Block.WOOD);
+        draw_block_at(5,1, Block.METALL);
+        draw_block_at(6,1, Block.METALL);
+        draw_block_at(3,1, Block.GLASS);
+        draw_block_at(4,1, Block.GLASS);
+        draw_block_at(3,2, Block.GLASS);
+        draw_block_at(4,2, Block.GLASS);
+        draw_block_at(3,3, Block.GLASS);
+        draw_block_at(4,3, Block.GLASS);
+        draw_block_at(3,4, Block.GLASS);
+        draw_block_at(4,4, Block.GLASS);
+
+    }
+
+    private void draw_block_at(int x, int y, @NotNull Block type){
+        Building_block bb;
+        BufferedImage[] bi;
+        switch (type){
+            case GRASS:
+                bi = loadPics("pics/grass_block.png", 1);
+                bb = new Grass_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                break;
+            case WOOD:
+                bi = loadPics("pics/wood_block.png", 1);
+                bb = new Wood_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                break;
+            case METALL:
+                bi = loadPics("pics/metal_block.png", 1);
+                bb = new Metal_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                break;
+            case GLASS:
+                bi = loadPics("pics/glass_block.png", 1);
+                bb = new Metal_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                break;
+        }
     }
 
     //do one time initializations (load images, ...)
@@ -57,21 +128,33 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 100, 460, 80, this);
+        walkMan = new WalkMan(walkManAr, 100, 400, 80, this);
         actors.add(walkMan);
 
-        createGrass();
+        init_butterfly();
+        draw_level();
+        //createGrass();
         createClouds();
 
-        started = true;
+        timer = new Timer(3000, this);
+        timer.start();
+
+        started = false;
+    }
+
+    private void init_butterfly() {
+        BufferedImage[] bf = loadPics("pics/butterfly.png", 16);
+        Butterfly buterfly = new Butterfly(bf, 450, 450, 80, this);
+        actors.add(buterfly);
     }
 
     private void createGrass(){
         BufferedImage[] bi = loadPics("pics/grasscomplete.png", 1);
-        Grass grass = new Grass(bi, 0, 490, 1000, this);
-        Grass grass2 = new Grass(bi, 527, 490, 1000, this);
-        actors.add(grass);
-        actors.add(grass2);
+        Grass_block grassBlock = new Grass_block(bi, 0, 490, 1000, this);
+        Grass_block grassBlock2 = new Grass_block(bi, 527, 490, 1000, this);
+        actors.add(grassBlock);
+        actors.add(grassBlock2);
+
 
     }
 
@@ -108,18 +191,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     @SuppressWarnings("unchecked")
     private void cloneVectors() {
+        if (actors_size < actors.size()){
+            actors.sort(Comparator.comparingInt(s -> s.zLocation));
+            actors_size = actors.size();
+        }
         painter = (Vector<Sprite>) actors.clone();
-        //sort vector with zLocation, first element in painter is firstly drawn
-        // -->  start with lowest zLocation value,
-        // -1 <= zLoc <= 100
-        //clear painter
-
-        //loop over actors
-
-        //choose lowest zLoc
-
-        //maybe add when adding to actors, sort in?? -TODO
-        System.out.println(painter);
     }
 
     private void moveObjects() {
@@ -262,5 +338,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
     public void setStarted(boolean started) {
         this.started = started;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

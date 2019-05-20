@@ -11,13 +11,15 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
     GamePanel parent;           //Referenz auf Game Panel
     BufferedImage[] pics;       //Array zum speichern der Animation in Einzelbildern
     BufferedImage[] picsRevert;
-    int currentpic = 0;         //zähler fpr aktuell anzuzeigeneds bild
+    int currentpic = 0;         //zähler für aktuell anzuzeigeneds bild
     Direction movingDirection;
 
     protected double dx;        //wie schnell soll bewegt werden horizontal?
     protected double dy;
 
-    public Sprite(BufferedImage[] i, double x, double y, long delay, GamePanel p) {
+    int zLocation;              //location in z direction; -1: background, 100: top object
+
+    public Sprite(BufferedImage[] i, double x, double y, long delay, GamePanel p, int zLoc) {
         pics = i;
         this.x = x;
         this.y = y;
@@ -27,6 +29,7 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
         parent = p;
         picsRevert = Util.revertArray(i);
         movingDirection = Direction.STILL;
+        zLocation = zLoc;
     }
 
     public void changeDirection(Direction d){
@@ -75,6 +78,9 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
                 movingAnim(Direction.LEFT, delta);
                 break;
             case RIGHT:
+                movingAnim(Direction.RIGHT, delta);
+                break;
+            case FREELY:
                 movingAnim(Direction.RIGHT, delta);
                 break;
         }

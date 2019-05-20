@@ -5,7 +5,7 @@ public class WalkMan extends Sprite {
     private static final long serialVersionUID = 1L;
 
     public WalkMan(BufferedImage[] i, double x, double y, long delay, GamePanel p) {
-        super(i, x, y, delay, p);
+        super(i, x, y, delay, p, 50);
     }
 
     @Override
