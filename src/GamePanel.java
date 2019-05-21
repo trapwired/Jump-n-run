@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.NotNull;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -92,7 +90,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
     }
 
-    private void draw_block_at(int x, int y, @NotNull Block type){
+    private void draw_block_at(int x, int y, Block type){
         Building_block bb;
         BufferedImage[] bi;
         switch (type){
