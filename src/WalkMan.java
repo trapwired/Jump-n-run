@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 public class WalkMan extends Sprite {
 
     private static final long serialVersionUID = 1L;
+    long gravity = 10;
 
     public WalkMan(BufferedImage[] i, double x, double y, long delay, GamePanel p) {
         super(i, x, y, delay, p, 50);
@@ -31,5 +32,18 @@ public class WalkMan extends Sprite {
             setY(parent.getHeight()-getHeight());
             setVerticalSpeed(0);
         }
+    }
+
+    public void doesCollide(Sprite r) {
+        boolean horizontal = getY() == r.getY();
+        boolean vertikal = getX() + 100 > r.getX();
+        if(horizontal && vertikal){
+            setHorizontalSpeed(0);
+        }
+    }
+
+    public void move(long delta) {
+        dy += gravity;
+        super.move(delta);
     }
 }

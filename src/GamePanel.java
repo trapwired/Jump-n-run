@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     WalkMan walkMan;
     Vector<Sprite> actors;
     Vector<Sprite> painter;
+    Vector<Sprite> possible_collisions;
 
     //moving params, set when key pressed
     boolean up;
@@ -70,24 +71,29 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         //init the background blocks / draw the level
         int height = block_grid.length;
         int width  = block_grid[0].length;
-        //draw floor: grass
-        for (int i = 0; i < block_grid[0].length; i++){
-            draw_block_at(i, (height - 1), Block.GRASS);
-        }
 
-        draw_block_at(1,1, Block.WOOD);
-        draw_block_at(2,1, Block.WOOD);
-        draw_block_at(5,1, Block.METALL);
-        draw_block_at(6,1, Block.METALL);
-        draw_block_at(3,1, Block.GLASS);
-        draw_block_at(4,1, Block.GLASS);
-        draw_block_at(3,2, Block.GLASS);
-        draw_block_at(4,2, Block.GLASS);
-        draw_block_at(3,3, Block.GLASS);
-        draw_block_at(4,3, Block.GLASS);
-        draw_block_at(3,4, Block.GLASS);
-        draw_block_at(4,4, Block.GLASS);
 
+        draw_block_at(0,5,Block.GRASS);
+        draw_block_at(1,5,Block.GRASS);
+        draw_block_at(2,5,Block.GRASS);
+        draw_block_at(3,5,Block.GRASS);
+        draw_block_at(4,5,Block.GRASS);
+        draw_block_at(5,5,Block.GRASS);
+        draw_block_at(6,5,Block.GRASS);
+        draw_block_at(7,5,Block.GRASS);
+        draw_block_at(8,5,Block.GRASS);
+        draw_block_at(9,5,Block.GRASS);
+        draw_block_at(10,5,Block.GRASS);
+        draw_block_at(11,5,Block.GRASS);
+        draw_block_at(12,5,Block.GRASS);
+        draw_block_at(13,5,Block.GRASS);
+        draw_block_at(14,5,Block.GRASS);
+        draw_block_at(15,5,Block.GRASS);
+        draw_block_at(4,4,Block.WOOD);
+        draw_block_at(5,4,Block.WOOD);
+        draw_block_at(7,4,Block.WOOD);
+        draw_block_at(9,3,Block.METALL);
+        draw_block_at(11,3,Block.METALL);
     }
 
     private void draw_block_at(int x, int y, Block type){
@@ -98,21 +104,25 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
                 bi = loadPics("pics/grass_block.png", 1);
                 bb = new Grass_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
+                possible_collisions.add(bb);
                 break;
             case WOOD:
                 bi = loadPics("pics/wood_block.png", 1);
                 bb = new Wood_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
+                possible_collisions.add(bb);
                 break;
             case METALL:
                 bi = loadPics("pics/metal_block.png", 1);
                 bb = new Metal_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
+                possible_collisions.add(bb);
                 break;
             case GLASS:
                 bi = loadPics("pics/glass_block.png", 1);
                 bb = new Metal_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
+                possible_collisions.add(bb);
                 break;
         }
     }
@@ -126,7 +136,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 100, 400, 80, this);
+        possible_collisions = new Vector<Sprite>();
+        walkMan = new WalkMan(walkManAr, 100, 100, 80, this);
         actors.add(walkMan);
 
         init_butterfly();
@@ -142,7 +153,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
     private void init_butterfly() {
         BufferedImage[] bf = loadPics("pics/butterfly.png", 16);
-        Butterfly buterfly = new Butterfly(bf, 450, 450, 80, this);
+        Butterfly buterfly = new Butterfly(bf, 200, 200, 80, this);
         actors.add(buterfly);
     }
 
@@ -208,6 +219,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
             Sprite r = it.next();
             r.doLogic(delta);
         }
+        //Schauen ob Walkman mit Blcoks Kolidiert
+        for(ListIterator<Sprite> it = possible_collisions.listIterator(); it.hasNext();){
+            Sprite r = it.next();
+            walkMan.doesCollide(r);
+        }
+
     }
 
     private void checkKeys() {
@@ -223,9 +240,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         if(left) {
             walkMan.setHorizontalSpeed(-speed);
         }
-        if(!up&&!down){
-            walkMan.setVerticalSpeed(0);
-        }
+        //if(!up&&!down){
+        //    walkMan.setVerticalSpeed(0);
+        //}
         if(!left&&!right){
             walkMan.setHorizontalSpeed(0);
             walkMan.changeDirection(Direction.STILL);

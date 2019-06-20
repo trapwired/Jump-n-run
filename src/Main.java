@@ -2,7 +2,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new GamePanel(800, 600);
+        new GamePanel(1600, 600);
 
     }
 }
