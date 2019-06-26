@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ListIterator;
 import java.util.Vector;
@@ -51,5 +52,14 @@ public class Util {
             last_zLoc = r.zLocation;
         }
 
+    }
+    public static double getAngle(Point p1, Point p2) {
+        //p1 center walkman
+        //p2 center block
+        double angle = Math.toDegrees(Math.atan2(p1.x - p2.x, -p1.y + p2.y));
+        // Keep angle between 0 and 360
+        angle = angle + Math.ceil( -angle / 360 ) * 360;
+
+        return angle;
     }
 }

@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     boolean down;
     boolean left;
     boolean right;
+    boolean jump;
     boolean started;
     int speed = 200;
 
@@ -137,7 +138,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
         possible_collisions = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 100, 100, 80, this);
+        walkMan = new WalkMan(walkManAr, 100, 300, 80, this);
         actors.add(walkMan);
 
         init_butterfly();
@@ -228,6 +229,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     }
 
     private void checkKeys() {
+        if(jump){
+            if(walkMan.onFloor){
+                walkMan.setVerticalSpeed(-walkMan.gravity*40);
+                walkMan.setY(walkMan.getY()-1);
+                walkMan.onFloor = false;
+                jump = false;
+            }
+        }
 //        if(up) {
 //            walkMan.setVerticalSpeed(-speed);
 //        }
@@ -311,6 +320,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             right = true;
             walkMan.changeDirection(Direction.RIGHT);
+        }
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            jump = true;
         }
     }
 

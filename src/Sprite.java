@@ -98,21 +98,21 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
     }
 
     public void computeAnimation(Direction d) {
+        if(!d.equals(Direction.JUMP)){
+            if(d.equals(Direction.LEFT)){
+                currentpic--;
 
-        if(d.equals(Direction.LEFT)){
-            currentpic--;
+                if (currentpic < 0) {
+                    currentpic = pics.length - 1;
+                }
+            } else if (d.equals(Direction.RIGHT)){
+                currentpic++;
 
-            if (currentpic < 0) {
-                currentpic = pics.length - 1;
-            }
-        } else if (d.equals(Direction.RIGHT)){
-            currentpic++;
-
-            if (currentpic >= pics.length) {
-                currentpic = 0;
+                if (currentpic >= pics.length) {
+                    currentpic = 0;
+                }
             }
         }
-
     }
 
 
