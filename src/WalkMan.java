@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 public class WalkMan extends Sprite {
@@ -39,7 +40,9 @@ public class WalkMan extends Sprite {
     }
 
     public void doesCollide(Sprite r) {
-        if(this.intersects(r)){
+        //adjust hitbox according to animation
+        Rectangle2D.Double smallHitbox = new Rectangle2D.Double(getX() + 15, getY(), getWidth() - 30, getHeight());
+        if(smallHitbox.intersects(r)){
             Direction dir = calculateRelativeDirection(r);
             switch (dir){
                 case RIGHT:
