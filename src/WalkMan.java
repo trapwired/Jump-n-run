@@ -1,12 +1,11 @@
-import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 public class WalkMan extends Sprite {
 
     private static final long serialVersionUID = 1L;
-    long gravity = 15;
-    boolean onFloor;
+    long gravity = 10;
+    boolean onfloor;
 
     public WalkMan(BufferedImage[] i, double x, double y, long delay, GamePanel p) {
         super(i, x, y, delay, p, 80);
@@ -15,9 +14,7 @@ public class WalkMan extends Sprite {
     @Override
     public void doLogic(long delta){
         super.doLogic(delta);
-        if (!onFloor){
-            movingDirection = Direction.JUMP;
-        }
+
         if(getX()<0){
             setHorizontalSpeed(0);
             setX(0);
@@ -40,14 +37,17 @@ public class WalkMan extends Sprite {
     }
 
     public void doesCollide(Sprite r) {
-        //adjust hitbox according to animation
-        Rectangle2D.Double smallHitbox = new Rectangle2D.Double(getX() + 15, getY(), getWidth() - 30, getHeight());
-        if(smallHitbox.intersects(r)){
-            Direction dir = calculateRelativeDirection(r);
-            switch (dir){
+        Rectangle2D.Double smallWalkMan = new Rectangle2D.Double(getX()+15, getY(), 70, 100);
+        if(smallWalkMan.intersects(r)){
+            Direction richtung = Util.WalkManBlockRichtung(this, r);
+            switch (richtung){
                 case RIGHT:
                     setHorizontalSpeed(0);
                     setX(r.getX()+100);
+                    break;
+                case DOWN:
+                    setVerticalSpeed(0);
+                    setY(r.getY() + 100);
                     break;
                 case LEFT:
                     setHorizontalSpeed(0);
@@ -55,40 +55,16 @@ public class WalkMan extends Sprite {
                     break;
                 case UP:
                     setVerticalSpeed(0);
-                    setY(r.getY()-100);
-                    onFloor = true;
+                    setY(r.getY() - 100);
+                    onfloor = true;
                     break;
-                case DOWN:
-                    setVerticalSpeed(0);
-                    setY(r.getY()+100);
-                    break;
+
             }
         }
     }
 
-    private Direction calculateRelativeDirection(Sprite r) {
-        //get direction of walkman relative to block
-        Point centereWM = new Point((int) getCenterX(), (int) getCenterY());
-        Point centerB = new Point((int) r.getCenterX(), (int) r.getCenterY());
-        double angle = Util.getAngle(centereWM, centerB);
-        //we assume to find the man only on the outside
-        if(angle < 45){
-            return Direction.UP;
-        } else if (angle < 135){
-            return Direction.RIGHT;
-        } else if (angle < 225){
-            return Direction.DOWN;
-        } else if (angle < 315){
-            return Direction.LEFT;
-        } else {
-            return Direction.UP;
-        }
-    }
-
-
-
     public void move(long delta) {
-        dy += gravity;
+        this.setVerticalSpeed(dy +gravity);
         super.move(delta);
     }
 }

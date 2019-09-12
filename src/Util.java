@@ -53,13 +53,34 @@ public class Util {
         }
 
     }
+
+    public static Direction WalkManBlockRichtung(WalkMan walkMan, Sprite r) {
+        //Gebe Richtung aus: Wo ist Walkman in bezug auf Block
+        Point centereWM = new Point((int) walkMan.getCenterX(), (int) walkMan.getCenterY());
+        Point centerB = new Point((int) r.getCenterX(), (int) r.getCenterY());
+        double winkel = Util.getAngle(centereWM, centerB);
+        if(winkel >= 45 && winkel < 135) {
+            return Direction.RIGHT;
+        }
+        if(winkel >= 135 && winkel < 225) {
+            return Direction.DOWN;
+        }
+        if(winkel >= 225 && winkel < 315) {
+            return Direction.LEFT;
+        }
+        if((winkel >= 315 && winkel <= 360)||(winkel >= 0 && winkel < 45)) {
+            return Direction.UP;
+        }
+            return Direction.FREELY;
+    }
+
     public static double getAngle(Point p1, Point p2) {
         //p1 center walkman
         //p2 center block
         double angle = Math.toDegrees(Math.atan2(p1.x - p2.x, -p1.y + p2.y));
         // Keep angle between 0 and 360
         angle = angle + Math.ceil( -angle / 360 ) * 360;
-
         return angle;
     }
 }
+

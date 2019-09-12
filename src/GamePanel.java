@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     boolean left;
     boolean right;
     boolean jump;
+
     boolean started;
     int speed = 200;
 
@@ -95,6 +96,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         draw_block_at(7,4,Block.WOOD);
         draw_block_at(9,3,Block.METALL);
         draw_block_at(11,3,Block.METALL);
+        draw_block_at(12,3,Block.LAVA);
     }
 
     private void draw_block_at(int x, int y, Block type){
@@ -138,7 +140,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
         possible_collisions = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 100, 300, 80, this);
+        walkMan = new WalkMan(walkManAr, 900, 100, 80, this);
         actors.add(walkMan);
 
         init_butterfly();
@@ -181,6 +183,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
     @Override
     public void run() {
+        // game loop
         while(frame.isVisible()){
 
             computeDelta();
@@ -229,14 +232,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     }
 
     private void checkKeys() {
-        if(jump){
-            if(walkMan.onFloor){
-                walkMan.setVerticalSpeed(-walkMan.gravity*40);
-                walkMan.setY(walkMan.getY()-1);
-                walkMan.onFloor = false;
-                jump = false;
-            }
-        }
 //        if(up) {
 //            walkMan.setVerticalSpeed(-speed);
 //        }
@@ -248,6 +243,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         }
         if(left) {
             walkMan.setHorizontalSpeed(-speed);
+        }
+        if(jump && walkMan.onfloor){
+            walkMan.setVerticalSpeed(-walkMan.gravity*45);
+            double temp = walkMan.getY();
+            walkMan.setY(temp-1);
+            walkMan.onfloor = false;
+            jump = false;
         }
         //if(!up&&!down){
         //    walkMan.setVerticalSpeed(0);
@@ -323,7 +325,16 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         }
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
             jump = true;
+            // walkMan.changeDirection(Direction.JUMP);
         }
+        if(e.getKeyCode() == KeyEvent.VK_G){
+            walkMan.gravity *= 0.8;
+
+        }
+        if(e.getKeyCode() == KeyEvent.VK_H){
+            walkMan.gravity *= 1.2;
+        }
+
     }
 
     @Override
@@ -342,6 +353,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
             right = false;
             walkMan.changeDirection(Direction.STILL);
         }
+//        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+//            jump = false;
+//        }
 
         if(e.getKeyCode() == KeyEvent.VK_ENTER){
             if(!isStarted()){

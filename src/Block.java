@@ -1,3 +1,3 @@
 public enum Block {
-    GRASS, METALL, WOOD, GLASS
+    GRASS, METALL, WOOD, GLASS, LAVA
 }
