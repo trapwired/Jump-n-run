@@ -53,7 +53,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         w = w_b * 100;
         h = h_b * 100;
         this.setPreferredSize(new Dimension(w,h));
-        this.setBackground(Color.orange);
+        this.setBackground(Color.getHSBColor(35, 187, 249));
         frame = new JFrame("GameFrame");
         frame.setLocation(100,100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,29 +74,31 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         int height = block_grid.length;
         int width  = block_grid[0].length;
 
+        for(int i = 0; i <= 12; i++){
+            //make floor snowy
+            if(i != 7){
+                draw_block_at(i,5,Block.MOUNTAIN);
+            } else {
+                draw_block_at(i,5,Block.LAVA);
+            }
 
-        draw_block_at(0,5,Block.GRASS);
-        draw_block_at(1,5,Block.GRASS);
-        draw_block_at(2,5,Block.GRASS);
-        draw_block_at(3,5,Block.GRASS);
-        draw_block_at(4,5,Block.GRASS);
-        draw_block_at(5,5,Block.GRASS);
-        draw_block_at(6,5,Block.GRASS);
-        draw_block_at(7,5,Block.GRASS);
-        draw_block_at(8,5,Block.GRASS);
-        draw_block_at(9,5,Block.GRASS);
-        draw_block_at(10,5,Block.GRASS);
-        draw_block_at(11,5,Block.GRASS);
-        draw_block_at(12,5,Block.GRASS);
-        draw_block_at(13,5,Block.GRASS);
-        draw_block_at(14,5,Block.GRASS);
-        draw_block_at(15,5,Block.GRASS);
-        draw_block_at(4,4,Block.WOOD);
-        draw_block_at(5,4,Block.WOOD);
-        draw_block_at(7,4,Block.WOOD);
-        draw_block_at(9,3,Block.METALL);
-        draw_block_at(11,3,Block.METALL);
-        draw_block_at(12,3,Block.LAVA);
+        }
+        //create hill
+        draw_block_at(0,2,Block.MOUNTAIN);
+        draw_block_at(0,3,Block.MOUNTAIN);
+        draw_block_at(0,4,Block.MOUNTAIN);
+        draw_block_at(1,3,Block.MOUNTAIN);
+        draw_block_at(1,4,Block.MOUNTAIN);
+        draw_block_at(2,4,Block.MOUNTAIN);
+        draw_block_at(3,4,Block.MOUNTAIN);
+        //Add Diagonal Mountain Pieces
+        draw_block_at(1, 2, Block.MOUNTAIN_L);
+        draw_block_at(2, 3, Block.MOUNTAIN_L);
+        draw_block_at(4, 4, Block.MOUNTAIN_L);
+        //Add End Piece
+        draw_block_at(12, 4, Block.MOUNTAIN_R);
+
+
     }
 
     private void draw_block_at(int x, int y, Block type){
@@ -127,6 +129,30 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
                 actors.add(bb);
                 possible_collisions.add(bb);
                 break;
+            case MOUNTAIN:
+                bi = loadPics("pics/mountain2_block.png", 1);
+                bb = new Mountain_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                possible_collisions.add(bb);
+                break;
+            case MOUNTAIN_L:
+                bi = loadPics("pics/mountainL_block.png", 1);
+                bb = new MountainL_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                possible_collisions.add(bb);
+                break;
+            case MOUNTAIN_R:
+                bi = loadPics("pics/mountainR_block.png", 1);
+                bb = new MountainR_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                possible_collisions.add(bb);
+                break;
+            case LAVA:
+                bi = loadPics("pics/Lava_block2.png", 1);
+                bb = new Lava_block(bi, x * 100, y * 100, 1000, this);
+                actors.add(bb);
+                possible_collisions.add(bb);
+                break;
         }
     }
 
@@ -140,10 +166,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         actors = new Vector<Sprite>();
         painter = new Vector<Sprite>();
         possible_collisions = new Vector<Sprite>();
-        walkMan = new WalkMan(walkManAr, 900, 100, 80, this);
+        walkMan = new WalkMan(walkManAr, 100, 100, 80, this);
         actors.add(walkMan);
 
-        init_butterfly();
+        //init_butterfly();
         draw_level();
         //createGrass();
         createClouds();
@@ -226,7 +252,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         //Schauen ob Walkman mit Blcoks Kolidiert
         for(ListIterator<Sprite> it = possible_collisions.listIterator(); it.hasNext();){
             Sprite r = it.next();
-            walkMan.doesCollide(r);
+            walkMan.doesCollide(r, this);
         }
 
     }
@@ -283,7 +309,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         }
     }
 
-    private BufferedImage[] loadPics(String path, int pics) {
+    public BufferedImage[] loadPics(String path, int pics) {
         BufferedImage[] anim = new BufferedImage[pics];
         BufferedImage source = null;
 

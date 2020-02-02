@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
@@ -36,28 +37,48 @@ public class WalkMan extends Sprite {
         }
     }
 
-    public void doesCollide(Sprite r) {
-        Rectangle2D.Double smallWalkMan = new Rectangle2D.Double(getX()+15, getY(), 70, 100);
-        if(smallWalkMan.intersects(r)){
-            Direction richtung = Util.WalkManBlockRichtung(this, r);
-            switch (richtung){
-                case RIGHT:
-                    setHorizontalSpeed(0);
-                    setX(r.getX()+100);
-                    break;
-                case DOWN:
-                    setVerticalSpeed(0);
-                    setY(r.getY() + 100);
-                    break;
-                case LEFT:
-                    setHorizontalSpeed(0);
-                    setX(r.getX()-100);
-                    break;
-                case UP:
-                    setVerticalSpeed(0);
-                    setY(r.getY() - 100);
-                    onfloor = true;
-                    break;
+    public void doesCollide(Sprite r, GamePanel gp) {
+        Rectangle2D.Double smallWalkMan = new Rectangle2D.Double(getX() + 15, getY(), 70, 100);
+        if (smallWalkMan.intersects(r)) {
+            if (r instanceof Building_block) {
+                Block intersectBlock = ((Building_block) r).block_type;
+                if (intersectBlock == Block.LAVA) {
+                    // Walkman collided with Lava -> GAME OVER
+                    System.out.println("Game Over");
+                    //dispose Frame (Exit Game)
+                    gp.frame.dispose();
+                } else if (intersectBlock == Block.MOUNTAIN_L){
+                    this.pics = gp.loadPics("pics/walkManBoardL2.png", 1);
+                } else if (intersectBlock == Block.MOUNTAIN){
+                    this.pics = gp.loadPics("pics/walkManBoardF.png", 1);
+                }
+
+                if(intersectBlock == Block.MOUNTAIN_L){
+
+                } else {
+                    Direction richtung = Util.WalkManBlockRichtung(this, r);
+                    switch (richtung) {
+                        case RIGHT:
+                            setHorizontalSpeed(0);
+                            setX(r.getX() + 100);
+                            break;
+                        case DOWN:
+                            setVerticalSpeed(0);
+                            setY(r.getY() + 100);
+                            break;
+                        case LEFT:
+                            setHorizontalSpeed(0);
+                            setX(r.getX() - 100);
+                            break;
+                        case UP:
+                            setVerticalSpeed(0);
+                            setY(r.getY() - 100);
+                            onfloor = true;
+                            break;
+                    }
+                }
+
+
 
             }
         }
