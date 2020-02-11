@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="540b9b29-0a49-4806-9ce0-002323293b78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Nachhilfe Christiano/META-INF/Nachhilfe Christiano.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pics/Lava_block.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lava_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lava_block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WalkMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WalkMan.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,26 +128,30 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="489" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1280.777@0.23.1280.777" timestamp="1580670598353" />
-    <state width="619" height="86" key="GridCell.Tab.0.bottom" timestamp="1580682652832">
+    <state width="619" height="86" key="GridCell.Tab.0.bottom" timestamp="1581411127809">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="86" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1580682652832" />
-    <state width="619" height="86" key="GridCell.Tab.0.center" timestamp="1580682652831">
+    <state width="619" height="86" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1581411127809" />
+    <state width="619" height="86" key="GridCell.Tab.0.center" timestamp="1581411127808">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="86" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1580682652831" />
-    <state width="619" height="86" key="GridCell.Tab.0.left" timestamp="1580682652831">
+    <state width="619" height="86" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1581411127808" />
+    <state width="619" height="86" key="GridCell.Tab.0.left" timestamp="1581411127807">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="86" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1580682652831" />
-    <state width="619" height="86" key="GridCell.Tab.0.right" timestamp="1580682652832">
+    <state width="619" height="86" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1581411127807" />
+    <state width="619" height="86" key="GridCell.Tab.0.right" timestamp="1581411127808">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="619" height="86" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1580682652832" />
-    <state x="317" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1580670374266">
+    <state width="619" height="86" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1581411127808" />
+    <state x="317" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1581410208673">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="317" y="244" key="com.intellij.ide.util.TipDialog/0.23.1280.777@0.23.1280.777" timestamp="1580670374266" />
+    <state x="317" y="244" key="com.intellij.ide.util.TipDialog/0.23.1280.777@0.23.1280.777" timestamp="1581410208673" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1581321182812">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1581321182812" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

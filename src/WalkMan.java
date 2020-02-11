@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
@@ -42,20 +43,10 @@ public class WalkMan extends Sprite {
         if (smallWalkMan.intersects(r)) {
             if (r instanceof Building_block) {
                 Block intersectBlock = ((Building_block) r).block_type;
-                if (intersectBlock == Block.LAVA) {
-                    // Walkman collided with Lava -> GAME OVER
-                    System.out.println("Game Over");
-                    //dispose Frame (Exit Game)
-                    gp.frame.dispose();
-                } else if (intersectBlock == Block.MOUNTAIN_L){
-                    this.pics = gp.loadPics("pics/walkManBoardL2.png", 1);
-                } else if (intersectBlock == Block.MOUNTAIN){
-                    this.pics = gp.loadPics("pics/walkManBoardF.png", 1);
-                }
-
-                if(intersectBlock == Block.MOUNTAIN_L){
-
+                    if(false){
+                        
                 } else {
+                    // normaler Fall: quadratischer block
                     Direction richtung = Util.WalkManBlockRichtung(this, r);
                     switch (richtung) {
                         case RIGHT:
