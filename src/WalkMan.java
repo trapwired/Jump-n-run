@@ -59,7 +59,27 @@ public class WalkMan extends Sprite {
 
             // Collision Detection
                 if (intersectBlock == Block.MOUNTAIN_L) {
+                    Direction richtung = Util.WalkManBlockRichtung(this, r);
+                    switch (richtung) {
+                        case RIGHT:
+                        // oder = ||
+                            // if(5 < 10 || 3 > 5){
 
+
+                        case UP:
+
+                            onfloor = true;
+                            break;
+                        case DOWN:
+                            setVerticalSpeed(0);
+                            setY(r.getY() + 100);
+                            break;
+                        case LEFT:
+                            setHorizontalSpeed(0);
+                            setX(r.getX() - 100);
+                            break;
+
+                    }
                 } else {
                     // normaler Fall: quadratischer block
                     Direction richtung = Util.WalkManBlockRichtung(this, r);
