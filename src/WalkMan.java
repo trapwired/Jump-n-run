@@ -28,13 +28,14 @@ public class WalkMan extends Sprite {
         }
 
         if(getY()<0){
-            setVerticalSpeed(0);
-            setY(0);
+           // setVerticalSpeed(0);
+            //setY(0);
         }
 
         if(getY() + getHeight()>parent.getHeight()){
-            setY(parent.getHeight()-getHeight());
-            setVerticalSpeed(0);
+            // setY(parent.getHeight()-getHeight());
+            // setVerticalSpeed(0);
+            setY(-getHeight());
         }
     }
 
@@ -43,8 +44,22 @@ public class WalkMan extends Sprite {
         if (smallWalkMan.intersects(r)) {
             if (r instanceof Building_block) {
                 Block intersectBlock = ((Building_block) r).block_type;
-                    if(false){
-                        
+
+                // Lava, und Bild ändern
+                if(intersectBlock == Block.LAVA){
+                    // Lava = Game Over
+                    gp.frame.dispose();
+                } else  if(intersectBlock == Block.MOUNTAIN){
+                    this.pics = gp.loadPics("pics/walkmanBoardF.png",1);
+                } else  if(intersectBlock == Block.MOUNTAIN_L){
+                this.pics = gp.loadPics("pics/walkmanBoardL2.png",1);
+            }
+
+
+
+            // Collision Detection
+                if (intersectBlock == Block.MOUNTAIN_L) {
+
                 } else {
                     // normaler Fall: quadratischer block
                     Direction richtung = Util.WalkManBlockRichtung(this, r);

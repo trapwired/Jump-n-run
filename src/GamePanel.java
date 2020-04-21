@@ -96,9 +96,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         draw_block_at(2, 3, Block.MOUNTAIN_L);
         draw_block_at(4, 4, Block.MOUNTAIN_L);
         //Add End Piece
-        draw_block_at(12, 4, Block.MOUNTAIN_R);
-
-
+        //draw_block_at(12, 4, Block.MOUNTAIN_R);
+        //draw_block_at(13, 3, Block.MOUNTAIN_R);
+        //draw_block_at(13, 4, Block.MOUNTAIN);
     }
 
     private void draw_block_at(int x, int y, Block type){
@@ -212,7 +212,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         // game loop
         while(frame.isVisible()){
 
-            computeDelta();
+            computeDelta();         // Zeit seit letztem Update
 
             if(isStarted()){
                 checkKeys();        //abfrage tastatureingaben
