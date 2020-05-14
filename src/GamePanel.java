@@ -45,7 +45,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     Building_block[][] block_grid;
     //2d array für Kolisions Map (true = Block vorhanden, false = Luft)
     boolean[][] collision_map;
-    int counter = 0;
 
     Timer timer;
     BufferedImage[] butterfly;
@@ -105,9 +104,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         draw_block_at(2, 3, Block.MOUNTAIN_L);
         draw_block_at(4, 4, Block.MOUNTAIN_L);
         //Add End Piece
+        draw_block_at(12, 4, Block.GRASS);
         //draw_block_at(12, 4, Block.MOUNTAIN_R);
         //draw_block_at(13, 3, Block.MOUNTAIN_R);
         //draw_block_at(13, 4, Block.MOUNTAIN);
+        exportCollisionMap("CollisionMap");
     }
 
     private void draw_block_at(int x, int y, Block type){
@@ -174,19 +175,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
     }
 
     private void addBlocktoCollisionMap(Building_block bb){
-        /*
-        _____________________ x
-        |
-        |       ______
-        |       |     |
-        |       |     |
-        |
 
-        y
-         */
-
-        for(int i = 0; i < 600; i++){
-            for(int j = 0; j < 1600; j++){
+        for(int i = 0; i < this.getHeight(); i++){
+            for(int j = 0; j < this.getWidth(); j++){
                 if((i >= bb.y && i < bb.y + 101) && (j >= bb.x && j < bb.x + 101)){
                     collision_map[i][j] = true;
                 }
@@ -195,31 +186,30 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         }
         if (bb.block_type == Block.MOUNTAIN_L) {
             // setze dreicke oben auf false
-            for(int i = (int) bb.x; i < bb.x + 101; i++){
-                for(int j = (int) bb.y; j < bb.y + 101; j++){
+            for(int i = 0; i < 101; i++){
+                for(int j = 0; j < 101; j++){
                     if(i > j){
-                        collision_map[j][i] = false;
+                        collision_map[(int) bb.y + j][ (int) bb.x + i] = false;
                     }
                 }
             }
 
         }
 
+    }
+
+    private void exportCollisionMap(String fileName){
         // for testing: neue Datei erstellen mit aktueller collision map
-        try {
-            WriteFile data = new WriteFile( "cM/collisionMap" + counter++, true);
-            for(int i = 0; i < collision_map.length; i++){
-                String line = "";
-                for(int j = 0; j < collision_map[0].length; j++){
-                    if(collision_map[i][j]){
-                        line += "X";
-                    } else {
-                        line += "0";
-                    }
-                }
-                data.writeToFile(line);
+        BufferedImage bufferedImage = new BufferedImage(this.getWidth() + 1,this.getHeight() + 1,BufferedImage.TYPE_BYTE_BINARY);
+        for(int i = 0; i < collision_map[0].length; i++){
+            for(int j = 0; j < collision_map.length; j++){
+                bufferedImage.setRGB(i,j,collision_map[j][i]?Color.BLACK.getRGB():Color.WHITE.getRGB());
             }
-        } catch (IOException e) {
+        }
+        try {
+            File outputfile = new File("cM/"+fileName +".png");
+            ImageIO.write(bufferedImage, "png", outputfile);
+        } catch (IOException e){
             System.out.println(e.getMessage());
         }
     }
@@ -237,7 +227,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         walkMan = new WalkMan(walkManAr, 100, 100, 80, this);
         actors.add(walkMan);
 
-        //init_butterfly();
+        // init_butterfly();
         draw_level();
         //createGrass();
         createClouds();

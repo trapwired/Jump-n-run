@@ -53,7 +53,9 @@ public class WalkMan extends Sprite {
                     this.pics = gp.loadPics("pics/walkmanBoardF.png",1);
                 } else  if(intersectBlock == Block.MOUNTAIN_L){
                 this.pics = gp.loadPics("pics/walkmanBoardL2.png",1);
-            }
+                } else if (intersectBlock == Block.GRASS){
+                    this.pics = gp.loadPics("pics/walkManS.png", 9);
+                }
 
 
 
