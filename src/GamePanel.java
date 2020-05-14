@@ -43,6 +43,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
     //2D array for building blocks
     Building_block[][] block_grid;
+    //2d array für Kolisions Map (true = Block vorhanden, false = Luft)
+    boolean[][] collision_map;
+    int counter = 0;
 
     Timer timer;
     BufferedImage[] butterfly;
@@ -61,6 +64,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         frame.addKeyListener(this);
         frame.pack();
         frame.setVisible(true);
+        //Init Collision Map
+        collision_map = new boolean[h][w];
+        /* new boolean[2][5]
+        1 2 3 4 5
+        6 7 8 9 10
+         */
 
         //init background grid
         block_grid = new Building_block[h_b][w_b];
@@ -110,49 +119,108 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
                 bb = new Grass_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case WOOD:
                 bi = loadPics("pics/wood_block.png", 1);
                 bb = new Wood_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case METALL:
                 bi = loadPics("pics/metal_block.png", 1);
                 bb = new Metal_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case GLASS:
                 bi = loadPics("pics/glass_block.png", 1);
                 bb = new Metal_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case MOUNTAIN:
                 bi = loadPics("pics/mountain2_block.png", 1);
                 bb = new Mountain_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case MOUNTAIN_L:
                 bi = loadPics("pics/mountainL_block.png", 1);
                 bb = new MountainL_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case MOUNTAIN_R:
                 bi = loadPics("pics/mountainR_block.png", 1);
                 bb = new MountainR_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
             case LAVA:
                 bi = loadPics("pics/Lava_block2.png", 1);
                 bb = new Lava_block(bi, x * 100, y * 100, 1000, this);
                 actors.add(bb);
                 possible_collisions.add(bb);
+                addBlocktoCollisionMap(bb);
                 break;
+        }
+    }
+
+    private void addBlocktoCollisionMap(Building_block bb){
+        /*
+        _____________________ x
+        |
+        |       ______
+        |       |     |
+        |       |     |
+        |
+
+        y
+         */
+
+        for(int i = 0; i < 600; i++){
+            for(int j = 0; j < 1600; j++){
+                if((i >= bb.y && i < bb.y + 101) && (j >= bb.x && j < bb.x + 101)){
+                    collision_map[i][j] = true;
+                }
+            }
+
+        }
+        if (bb.block_type == Block.MOUNTAIN_L) {
+            // setze dreicke oben auf false
+            for(int i = (int) bb.x; i < bb.x + 101; i++){
+                for(int j = (int) bb.y; j < bb.y + 101; j++){
+                    if(i > j){
+                        collision_map[j][i] = false;
+                    }
+                }
+            }
+
+        }
+
+        // for testing: neue Datei erstellen mit aktueller collision map
+        try {
+            WriteFile data = new WriteFile( "cM/collisionMap" + counter++, true);
+            for(int i = 0; i < collision_map.length; i++){
+                String line = "";
+                for(int j = 0; j < collision_map[0].length; j++){
+                    if(collision_map[i][j]){
+                        line += "X";
+                    } else {
+                        line += "0";
+                    }
+                }
+                data.writeToFile(line);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
