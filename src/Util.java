@@ -74,6 +74,17 @@ public class Util {
             return Direction.FREELY;
     }
 
+    public static int angleBetweenSprites(Sprite s1, Sprite s2){
+        // 0: s1 is directly above s2
+        // 90: s1 is to the right of s2
+        // 180: s1 is directly under s2
+        // 270: s1 is to the left of s2
+        Point center1 = new Point((int) s1.getCenterX(), (int) s1.getCenterY());
+        Point center2 = new Point((int) s2.getCenterX(), (int) s2.getCenterY());
+        double angle = Util.getAngle(center1, center2);
+        return (int) angle;
+    }
+
     public static double getAngle(Point p1, Point p2) {
         //p1 center walkman
         //p2 center block

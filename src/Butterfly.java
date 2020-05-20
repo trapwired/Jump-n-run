@@ -1,5 +1,6 @@
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 public class Butterfly extends Sprite {
 
@@ -17,6 +18,13 @@ public class Butterfly extends Sprite {
         } else {
             setVerticalSpeed(-verticalspeed);
         }
+    }
+
+    @Override
+    boolean[][] generateCollisionMap() {
+        // TODO generate collisionMap
+        boolean[][] cM = new boolean[100][100];
+        return cM;
     }
 
 

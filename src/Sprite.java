@@ -17,6 +17,8 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
     protected double dx;        //wie schnell soll bewegt werden horizontal?
     protected double dy;
 
+    boolean[][] collisionMap;   // boolean array that contains a exact collision map
+
     int zLocation;              //location in z direction; -1: background, 100: top object
 
     public Sprite(BufferedImage[] i, double x, double y, long delay, GamePanel p, int zLoc) {
@@ -30,7 +32,10 @@ public abstract class Sprite extends Rectangle2D.Double implements Drawable, Mov
         picsRevert = Util.revertArray(i);
         movingDirection = Direction.STILL;
         zLocation = zLoc;
+        this.collisionMap = generateCollisionMap();
     }
+
+    abstract boolean[][] generateCollisionMap();
 
     public void changeDirection(Direction d){
         movingDirection = d;

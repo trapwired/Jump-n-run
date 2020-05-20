@@ -1,4 +1,5 @@
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 public class Cloud extends Sprite {
 
@@ -17,7 +18,12 @@ public class Cloud extends Sprite {
         }
     }
 
-
+    @Override
+    boolean[][] generateCollisionMap() {
+        // TODO generate CollisionMap
+        boolean[][] cM = new boolean[100][100];
+        return cM;
+    }
 
     @Override
     public void doLogic(long delta){

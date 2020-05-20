@@ -21,31 +21,19 @@
   <component name="ChangeListManager">
     <list default="true" id="540b9b29-0a49-4806-9ce0-002323293b78" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap12" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap13" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap16" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap19" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap21" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cM/collisionMap9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Butterfly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Butterfly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Glass_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Glass_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grass_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grass_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lava_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lava_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Metal_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Metal_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MountainL_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MountainL_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MountainR_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MountainR_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mountain_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mountain_block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WalkMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WalkMan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wood_block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wood_block.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,42 +155,46 @@
     <option name="LAST_COMMIT_MESSAGE" value="finish basic level" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2517" height="401" key="GridCell.Tab.0.bottom" timestamp="1589494600968">
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1589957456230">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494600968" />
+    <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589957456230" />
+    <state width="2517" height="771" key="GridCell.Tab.0.bottom" timestamp="1589977461068">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="771" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589977461068" />
     <state width="619" height="86" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1581411127809" />
-    <state width="2517" height="401" key="GridCell.Tab.0.center" timestamp="1589494600968">
+    <state width="2517" height="771" key="GridCell.Tab.0.center" timestamp="1589977461068">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494600968" />
+    <state width="2517" height="771" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589977461068" />
     <state width="619" height="86" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1581411127808" />
-    <state width="2517" height="401" key="GridCell.Tab.0.left" timestamp="1589494600968">
+    <state width="2517" height="771" key="GridCell.Tab.0.left" timestamp="1589977461068">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494600968" />
+    <state width="2517" height="771" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589977461068" />
     <state width="619" height="86" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1581411127807" />
-    <state width="2517" height="401" key="GridCell.Tab.0.right" timestamp="1589494600968">
+    <state width="2517" height="771" key="GridCell.Tab.0.right" timestamp="1589977461068">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="401" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494600968" />
+    <state width="2517" height="771" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589977461068" />
     <state width="619" height="86" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1581411127808" />
-    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1589494314997">
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1589494715915">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494314997" />
-    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1589494314997">
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494715915" />
+    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1589494715914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494314997" />
-    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1589494314997">
+    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494715914" />
+    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1589494715914">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494314997" />
-    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1589494314997">
+    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494715914" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1589494715915">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494314997" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/2560.0.1920.1040@0.0.2560.1400" timestamp="1589494715915" />
     <state x="317" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1581410208673">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

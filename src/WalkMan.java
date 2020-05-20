@@ -14,6 +14,17 @@ public class WalkMan extends Sprite {
     }
 
     @Override
+    boolean[][] generateCollisionMap() {
+        boolean[][] cM = new boolean[100][100];
+        for(int i = 0; i < 100; i++){
+            for(int j = 15; j < 85; j++){
+                cM[i][j] = true;
+            }
+        }
+        return cM;
+    }
+
+    @Override
     public void doLogic(long delta){
         super.doLogic(delta);
 
@@ -40,8 +51,12 @@ public class WalkMan extends Sprite {
     }
 
     public void doesCollide(Sprite r, GamePanel gp) {
-        Rectangle2D.Double smallWalkMan = new Rectangle2D.Double(getX() + 15, getY(), 70, 100);
-        if (smallWalkMan.intersects(r)) {
+        // rough collision detection
+        if (this.intersects(r)) {
+            // fine-tuned collision detection
+            int direction = Util.angleBetweenSprites(this, r);
+            System.out.println(direction);
+
             if (r instanceof Building_block) {
                 Block intersectBlock = ((Building_block) r).block_type;
 
