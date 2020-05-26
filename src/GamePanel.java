@@ -214,9 +214,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
         // init_butterfly();
         draw_level();
-        //createGrass();
+        // createGrass();
         createClouds();
-        Util.exportCollisionMaps();
+        // Util.exportCollisionMaps();
 
         timer = new Timer(3000, this);
         timer.start();

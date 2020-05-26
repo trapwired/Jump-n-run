@@ -68,10 +68,13 @@ public class WalkMan extends Sprite {
                     gp.frame.dispose();
                 } else  if(intersectBlock == Block.MOUNTAIN){
                     this.pics = gp.loadPics("pics/walkmanBoardF.png",1);
+                    this.collisionMap = Util.importCollisionMapPNG("pics/walkmanBoardF.png");
                 } else  if(intersectBlock == Block.MOUNTAIN_L){
                 this.pics = gp.loadPics("pics/walkmanBoardL2.png",1);
+                this.collisionMap = Util.importCollisionMapPNG("pics/walkmanBoardL2.png");
                 } else if (intersectBlock == Block.GRASS){
                     this.pics = gp.loadPics("pics/walkManS.png", 9);
+                    this.collisionMap = generateCollisionMap();
                 }
 
 
