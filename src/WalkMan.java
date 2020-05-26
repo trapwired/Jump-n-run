@@ -51,10 +51,12 @@ public class WalkMan extends Sprite {
     }
 
     public void doesCollide(Sprite r, GamePanel gp) {
-        // rough collision detection
+        // rough collision detection (treat everything as a square block)
         if (this.intersects(r)) {
             // fine-tuned collision detection
+            // get angle to know approximately where the collision takes place, 0 degrees means walkman is directly above
             int direction = Util.angleBetweenSprites(this, r);
+
             System.out.println(direction);
 
             if (r instanceof Building_block) {

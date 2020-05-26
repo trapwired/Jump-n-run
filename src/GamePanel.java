@@ -108,7 +108,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         //draw_block_at(12, 4, Block.MOUNTAIN_R);
         //draw_block_at(13, 3, Block.MOUNTAIN_R);
         //draw_block_at(13, 4, Block.MOUNTAIN);
-        exportCollisionMap("CollisionMap");
     }
 
     private void draw_block_at(int x, int y, Block type){
@@ -198,21 +197,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
 
     }
 
-    private void exportCollisionMap(String fileName){
-        // for testing: neue Datei erstellen mit aktueller collision map
-        BufferedImage bufferedImage = new BufferedImage(this.getWidth() + 1,this.getHeight() + 1,BufferedImage.TYPE_BYTE_BINARY);
-        for(int i = 0; i < collision_map[0].length; i++){
-            for(int j = 0; j < collision_map.length; j++){
-                bufferedImage.setRGB(i,j,collision_map[j][i]?Color.BLACK.getRGB():Color.WHITE.getRGB());
-            }
-        }
-        try {
-            File outputfile = new File("cM/"+fileName +".png");
-            ImageIO.write(bufferedImage, "png", outputfile);
-        } catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-    }
+
 
     //do one time initializations (load images, ...)
     private void doInitializations() {
@@ -231,6 +216,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener, ActionLi
         draw_level();
         //createGrass();
         createClouds();
+        Util.exportCollisionMaps();
 
         timer = new Timer(3000, this);
         timer.start();

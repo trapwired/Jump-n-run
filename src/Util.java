@@ -1,5 +1,8 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ListIterator;
 import java.util.Vector;
 
@@ -92,6 +95,59 @@ public class Util {
         // Keep angle between 0 and 360
         angle = angle + Math.ceil( -angle / 360 ) * 360;
         return angle;
+    }
+
+    public static void exportCollisionMap(String fileName, boolean[][] collision_map){
+        // for testing: neue Datei erstellen mit aktueller collision map
+        BufferedImage bufferedImage = new BufferedImage(collision_map[0].length,collision_map.length,BufferedImage.TYPE_BYTE_BINARY);
+        for(int i = 0; i < collision_map[0].length; i++){
+            for(int j = 0; j < collision_map.length; j++){
+                bufferedImage.setRGB(i,j,collision_map[j][i]?Color.BLACK.getRGB():Color.WHITE.getRGB());
+            }
+        }
+        try {
+            File outputfile = new File("cM/"+fileName +".png");
+            ImageIO.write(bufferedImage, "png", outputfile);
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+   public static boolean[][] importCollisionMapPNG(String path){
+        BufferedImage img = null;
+        boolean[][] res = null;
+        try {
+            img = ImageIO.read(new File(path));
+            res = new boolean[img.getHeight()][img.getWidth()];
+            int color = 0;
+            for(int i = 0; i < img.getWidth(); i++){
+                for(int j = 0; j < img.getHeight(); j++){
+                    color = img.getRGB(i, j);
+                    // Components will be in the range of 0..255:
+                    int blue = color & 0xff;
+                    int green = (color & 0xff00) >> 8;
+                    int red = (color & 0xff0000) >> 16;
+                    int alpha = (color & 0xff000000) >>> 24;
+                    int rgbSUM = blue + green + red;
+                    // if a pixel is either white or transparent, set CM to false (= no block)
+                    res[j][i] = !(alpha == 0 || rgbSUM == 765);
+                }
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            //  e.printStackTrace();
+        }
+
+
+        return res;
+   }
+
+    public static void exportCollisionMaps() {
+        Util.exportCollisionMap("walkManBoardFGen", Util.importCollisionMapPNG("pics/walkManBoardF.png"));
+        Util.exportCollisionMap("butterflyGen", Util.importCollisionMapPNG("pics/butterfly.png"));
+        Util.exportCollisionMap("CloudGen", Util.importCollisionMapPNG("pics/cloud.png"));
+        Util.exportCollisionMap("mountainL_blockGen", Util.importCollisionMapPNG("pics/mountainL_block.png"));
+
     }
 }
 
