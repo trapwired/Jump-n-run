@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="540b9b29-0a49-4806-9ce0-002323293b78" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pics/walkManBoardL.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WalkMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WalkMan.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +31,46 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="218" column="22" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#14266#14267#0" expanded="true" />
+                <element signature="e#14304#14305#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="124" column="57" lean-forward="true" selection-start-line="124" selection-start-column="57" selection-end-line="124" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/WalkMan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
+              <folding>
+                <element signature="e#333#334#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -42,8 +79,21 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ex</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Util.java" />
+        <option value="$PROJECT_DIR$/src/GamePanel.java" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="355" />
@@ -54,6 +104,41 @@
   <component name="ProjectId" id="1XGRFWt4zoL62Ino5VuWCjBjrnk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Nachhilfe Java programmiren V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nachhilfe Java programmiren V2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nachhilfe Java programmiren V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nachhilfe Java programmiren V2" type="462c0819:PsiDirectoryNode" />
+              <item name="cM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nachhilfe Java programmiren V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nachhilfe Java programmiren V2" type="462c0819:PsiDirectoryNode" />
+              <item name="pics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Nachhilfe Java programmiren V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Nachhilfe Java programmiren V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -75,6 +160,18 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -127,17 +224,99 @@
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.4992272" visible="true" weight="0.23614073" />
+      <window_info id="Structure" order="6" sideWeight="0.5007728" side_tool="true" weight="0.23347548" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.32917964" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32955405" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.3281412" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.39984882" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="11" weight="0.32955405" />
+      <window_info anchor="right" id="Theme Preview" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.24989809" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.4992272" visible="true" weight="0.23347548" />
+      <window_info id="Structure" order="6" sideWeight="0.5007728" side_tool="true" weight="0.23347548" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.32917964" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32955405" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.3281412" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.39984882" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="11" weight="0.32955405" />
+      <window_info anchor="right" id="Theme Preview" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.24989809" />
+    </layout-to-restore>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change background color" />
@@ -190,6 +369,76 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/WriteFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cM/bliblablub.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cM/bli.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cM/CollisionMap.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pics/walkMan.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="218" column="22" selection-start-line="218" selection-start-column="22" selection-end-line="218" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#14266#14267#0" expanded="true" />
+            <element signature="e#14304#14305#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pics/walkManBoardF.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pics/butterfly.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cM/butterflyGen.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pics/cloud.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cM/CloudGen.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cM/walkManBoardFGen.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="124" column="57" lean-forward="true" selection-start-line="124" selection-start-column="57" selection-end-line="124" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
