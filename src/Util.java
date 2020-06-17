@@ -115,14 +115,15 @@ public class Util {
 
    public static boolean[][] importCollisionMapPNG(String path){
         BufferedImage img = null;
-        boolean[][] res = null;
+        boolean[][] result = null;
         try {
-            img = ImageIO.read(new File(path));
-            res = new boolean[img.getHeight()][img.getWidth()];
+            File picImport = new File(path);
+            img = ImageIO.read(picImport);
+            result = new boolean[img.getHeight()][img.getWidth()];
             int color = 0;
             for(int i = 0; i < img.getWidth(); i++){
                 for(int j = 0; j < img.getHeight(); j++){
-                    color = img.getRGB(i, j);
+                    color = img.getRGB(i, j); // TODO change to ARGB?
                     // Components will be in the range of 0..255:
                     int blue = color & 0xff;
                     int green = (color & 0xff00) >> 8;
@@ -130,16 +131,15 @@ public class Util {
                     int alpha = (color & 0xff000000) >>> 24;
                     int rgbSUM = blue + green + red;
                     // if a pixel is either white or transparent, set CM to false (= no block)
-                    res[j][i] = !(alpha == 0 || rgbSUM == 765);
+                    result[j][i] = !(alpha == 0 || rgbSUM == 765);
                 }
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            //  e.printStackTrace();
+            e.printStackTrace();
         }
 
 
-        return res;
+        return result;
    }
 
     public static void exportCollisionMaps() {
